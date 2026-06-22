@@ -57,7 +57,7 @@ export default function Home() {
         {/* LOGO - Left Side */}
         <div className="text-xl font-bold tracking-tight text-white flex items-center gap-2 z-10 cursor-pointer hover:scale-105 transition-transform">
           <CircuitBoard size={24} className="text-indigo-500" />
-          pranay<span className="text-indigo-500">.dev</span>
+          pranay<span className="text-indigo-500">.NetSec</span>
         </div>
 
         {/* PILL - Absolute Center */}
