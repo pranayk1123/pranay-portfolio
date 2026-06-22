@@ -114,18 +114,27 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full p-2 bg-gradient-to-br from-indigo-500 via-blue-500 to-purple-600 shadow-[0_0_60px_rgba(99,102,241,0.4)] hover:shadow-[0_0_80px_rgba(99,102,241,0.6)] transition-shadow duration-500 group animate-pulse">
-            <div className="relative w-full h-full rounded-full overflow-hidden bg-zinc-950 border-4 border-zinc-950 group-hover:scale-95 transition-transform duration-500">
+          {/* Profile Image - Rotating Neon Border Effect (Replaced Blink/Pulse) */}
+          <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full flex items-center justify-center group hover:-translate-y-2 transition-transform duration-500">
+            {/* Rotating Gradient Background */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-500 via-cyan-400 to-purple-600 animate-[spin_4s_linear_infinite] group-hover:animate-[spin_2s_linear_infinite]"></div>
+            
+            {/* Constant Outer Glow (No blinking) */}
+            <div className="absolute inset-0 rounded-full bg-indigo-500/30 blur-xl group-hover:bg-indigo-400/50 group-hover:blur-2xl transition-all duration-500"></div>
+            
+            {/* Inner Image Container */}
+            <div className="relative w-[calc(100%-8px)] h-[calc(100%-8px)] rounded-full overflow-hidden bg-zinc-950 z-10 border-[4px] border-[#06080d]">
               <Image 
                 src="/profile.png" 
                 alt="Pranay Shekhar Kalekar"
                 fill 
-                className="object-cover hover:scale-110 transition-transform duration-700" 
+                className="object-cover group-hover:scale-110 transition-transform duration-700" 
                 priority 
                 sizes="(max-width: 768px) 192px, 256px" 
               />
             </div>
           </div>
+
         </div>
       </section>
 
@@ -184,7 +193,7 @@ export default function Home() {
                   </li>
                 </ul>
                 
-                <a href="https://travalling-website.vercel.app/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-black bg-indigo-400 hover:bg-indigo-300 transition-colors px-6 py-3 rounded-full hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:scale-105">
+                <a href="https://travelling-website.vercel.app/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-black bg-indigo-400 hover:bg-indigo-300 transition-colors px-6 py-3 rounded-full hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:scale-105">
                   <ExternalLink size={18} /> View Live Project
                 </a>
               </div>
@@ -289,9 +298,9 @@ export default function Home() {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10" data-aos="fade-up">
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">Let's craft <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">excellent systems together.</span></h2>
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">Let's build <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">secure networks.</span></h2>
           <p className="text-xl text-slate-400 mb-12 max-w-xl mx-auto">
-            I'm currently seeking entry-level developer roles. Whether you have a question or just want to chat, my inbox is always open!
+            I'm currently seeking entry-level roles in Cybersecurity, Networking, and IT Infrastructure. Whether you have an opportunity or just want to chat, my inbox is always open!
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16 w-full sm:w-auto">
