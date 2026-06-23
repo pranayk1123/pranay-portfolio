@@ -31,11 +31,11 @@ const skills = {
   "Tools & OS": ["GitHub", "Linux", "Power BI", "VS Code"],
 };
 
-// 3. Common Animated Card Component
-const Card = ({ children, className = '', aosDelay = 0 }: { children: React.ReactNode, className?: string, aosDelay?: number }) => (
+// 3. Common Animated Card Component (Ata aaplya type pramane animation gheil)
+const Card = ({ children, className = '', aosDelay = 0, aosType = 'fade-up' }: { children: React.ReactNode, className?: string, aosDelay?: number, aosType?: string }) => (
   <div 
     className={`bg-zinc-900 border border-zinc-800/60 p-8 rounded-3xl shadow-lg shadow-black/30 hover:border-indigo-500/50 hover:shadow-[0_8px_40px_rgba(99,102,241,0.2)] transition-all duration-500 hover:-translate-y-1 group ${className}`}
-    data-aos="fade-up"
+    data-aos={aosType}
     data-aos-delay={aosDelay}
   >
     {children}
@@ -224,7 +224,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Orbit Scope Hackathon */}
-            <Card aosDelay={100} className="flex flex-col h-full">
+            <Card aosType="fade-right" aosDelay={0} className="flex flex-col h-full">
               <div className="flex items-center gap-4 mb-4">
                 <div className="p-3 bg-yellow-500/10 rounded-2xl border border-yellow-500/20"><Trophy size={28} className="text-yellow-400" /></div>
                 <h3 className="text-2xl font-bold text-white">1st Prize - Hackathon</h3>
@@ -247,7 +247,7 @@ export default function Home() {
             </Card>
 
             {/* Code Quest */}
-            <Card aosDelay={200} className="flex flex-col h-full">
+            <Card aosType="fade-left" aosDelay={100} className="flex flex-col h-full">
               <div className="flex items-center gap-4 mb-4">
                 <div className="p-3 bg-yellow-500/10 rounded-2xl border border-yellow-500/20"><Trophy size={28} className="text-yellow-400" /></div>
                 <h3 className="text-2xl font-bold text-white">1st Prize - Code Quest</h3>
