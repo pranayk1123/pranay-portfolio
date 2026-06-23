@@ -1,6 +1,11 @@
+"use client"; // Next.js madhe animations sathi he khup garjeche ahe
+
 // src/app/page.tsx
+import React, { useEffect } from 'react';
 import Image from 'next/image';
-import { Mail, Phone, MapPin, Briefcase, GraduationCap, FileCheck, Code2, Target, ExternalLink, ChevronRight, CircuitBoard, Sparkles, Trophy } from 'lucide-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { Mail, Phone, MapPin, Briefcase, GraduationCap, FileCheck, Code2, ExternalLink, ChevronRight, CircuitBoard, Sparkles, Trophy } from 'lucide-react';
 
 // 1. Custom Icons 
 const LinkedinIcon = ({ size = 20 }) => (
@@ -48,11 +53,21 @@ export default function Home() {
     linkedin: "https://www.linkedin.com/in/pranay-kalekar-921850338"
   };
 
+  // Initialize smooth scrolling animations
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true, // Animation ekdach hoil scroll kartana, jyamule te glitch honar nahi
+      easing: 'ease-out-cubic',
+    });
+  }, []);
+
   return (
     <main className="min-h-screen bg-[#06080d] text-slate-300 font-sans selection:bg-indigo-500/30 selection:text-indigo-200 overflow-hidden">
       
-      {/* --- FLOATING NAVBAR (Logo Left, Pill Centered) --- */}
-      <nav className="fixed top-6 w-full z-50 px-6 md:px-12 flex items-center">
+      {/* --- FLOATING NAVBAR (Logo Left, Pill Right on Mobile, Centered on Desktop) --- */}
+      {/* ADDED justify-between to push items to ends on mobile */}
+      <nav className="fixed top-6 w-full z-50 px-6 md:px-12 flex items-center justify-between">
         
         {/* LOGO - Left Side */}
         <div className="text-xl font-bold tracking-tight text-white flex items-center gap-2 z-10 cursor-pointer hover:scale-105 transition-transform">
@@ -60,8 +75,8 @@ export default function Home() {
           pranay<span className="text-indigo-500">.NetSec</span>
         </div>
 
-        {/* PILL - Absolute Center */}
-        <div className="absolute left-1/2 -translate-x-1/2 bg-zinc-900/80 backdrop-blur-xl border border-white/5 px-6 py-3 rounded-full flex items-center gap-6 md:gap-8 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+        {/* PILL - Relative on Mobile (Right), Absolute Center on Desktop */}
+        <div className="relative md:absolute md:left-1/2 md:-translate-x-1/2 bg-zinc-900/80 backdrop-blur-xl border border-white/5 px-6 py-3 rounded-full flex items-center gap-6 md:gap-8 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
           <div className="hidden md:flex gap-6">
             {['About', 'Experience', 'Education', 'Skills'].map((item) => (
               <a key={item} href={`#${item.toLowerCase()}`} className="text-sm font-medium text-slate-300 hover:text-white transition-colors relative group">
@@ -82,7 +97,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-40"></div>
         <div className="absolute top-[-20%] left-[-20%] w-[140%] h-[140%] bg-indigo-600/10 rounded-full blur-[150px] mix-blend-screen pointer-events-none"></div>
 
-        <div className="max-w-6xl mx-auto relative z-10 flex flex-col items-center" data-aos="zoom-out">
+        <div className="max-w-6xl mx-auto relative z-10 flex flex-col items-center" data-aos="fade-up">
           
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900 border border-zinc-800 text-indigo-400 text-sm font-medium mb-8 backdrop-blur-md shadow-lg shadow-black/50 hover:bg-zinc-800 transition-colors cursor-default">
             <Sparkles size={16} className="text-indigo-400 animate-pulse" />
@@ -162,7 +177,7 @@ export default function Home() {
           </div>
           
           <div className="relative border-l-2 border-white/10 ml-4 md:ml-6 space-y-16">
-            <div className="relative pl-10 md:pl-16 group" data-aos="fade-right">
+            <div className="relative pl-10 md:pl-16 group" data-aos="fade-up">
               <div className="absolute w-6 h-6 bg-zinc-950 border-4 border-indigo-500 rounded-full -left-[14px] top-1 group-hover:scale-125 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.8)] transition-all duration-300"></div>
               
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
@@ -193,7 +208,7 @@ export default function Home() {
                   </li>
                 </ul>
                 
-                <a href="https://travalling-website.vercel.app/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-black bg-indigo-400 hover:bg-indigo-300 transition-colors px-6 py-3 rounded-full hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:scale-105">
+                <a href="https://travelling-website.vercel.app/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-black bg-indigo-400 hover:bg-indigo-300 transition-colors px-6 py-3 rounded-full hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:scale-105">
                   <ExternalLink size={18} /> View Live Project
                 </a>
               </div>
@@ -313,7 +328,7 @@ export default function Home() {
         {/* --- 6. CERTIFICATIONS & INTERESTS --- */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
-          <div className="bg-gradient-to-br from-zinc-900 to-transparent border border-zinc-800 p-10 rounded-3xl relative overflow-hidden group hover:border-indigo-500/40 transition-colors flex flex-col h-full" data-aos="zoom-in">
+          <div className="bg-gradient-to-br from-zinc-900 to-transparent border border-zinc-800 p-10 rounded-3xl relative overflow-hidden group hover:border-indigo-500/40 transition-colors flex flex-col h-full" data-aos="fade-up">
             <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
             <div className="flex items-center gap-4 mb-8">
                <FileCheck size={28} className="text-indigo-400" />
@@ -340,7 +355,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-zinc-900 to-transparent border border-zinc-800 p-10 rounded-3xl relative overflow-hidden group hover:border-blue-500/40 transition-colors flex flex-col h-full" data-aos="zoom-in" data-aos-delay={100}>
+          <div className="bg-gradient-to-br from-zinc-900 to-transparent border border-zinc-800 p-10 rounded-3xl relative overflow-hidden group hover:border-blue-500/40 transition-colors flex flex-col h-full" data-aos="fade-up" data-aos-delay={100}>
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
             <div className="flex items-center gap-4 mb-8">
                <CircuitBoard size={28} className="text-blue-400" />
