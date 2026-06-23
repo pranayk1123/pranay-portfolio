@@ -271,7 +271,7 @@ export default function Home() {
                   Graduated
                 </div>
               </div>
-              <p className="text-slate-500 mt-6">Passed in <strong className="text-white">2025</strong> with a final <strong className="text-white text-xl">CGPA of 8.73</strong>.</p>
+              <p className="text-slate-500 mt-6">Passed in <strong className="text-white">2026</strong> with a final <strong className="text-white text-xl">CGPA of 8.73</strong>.</p>
             </Card>
 
             <Card aosDelay={200} className="relative overflow-hidden group">
