@@ -1,7 +1,7 @@
 "use client"; // Next.js madhe animations sathi he khup garjeche ahe
 
 // src/app/page.tsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -53,59 +53,89 @@ export default function Home() {
     linkedin: "https://www.linkedin.com/in/pranay-kalekar-921850338"
   };
 
-  // State to check if navbar should be visible on mobile scroll
-  const [visible, setVisible] = React.useState(true);
+  // State for Mobile Hamburger Menu
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Initialize smooth scrolling animations and scroll listener
+  // Initialize smooth scrolling animations
   useEffect(() => {
     AOS.init({
       duration: 800,
-      once: true, 
+      once: true, // Animation ekdach hoil scroll kartana, jyamule te glitch honar nahi
       easing: 'ease-out-cubic',
     });
-
-    let lastScrollY = window.scrollY;
-    
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      // If scrolling down, hide; if scrolling up, show menu
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setVisible(false);
-      } else {
-        setVisible(true);
-      }
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Prevent background scrolling when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMobileMenuOpen]);
 
   return (
     <main className="min-h-screen bg-[#06080d] text-slate-300 font-sans selection:bg-indigo-500/30 selection:text-indigo-200 overflow-hidden">
       
-      {/* --- FLOATING NAVBAR (Logo Top, Pill Bottom on Mobile & Absolute Center on Desktop) --- */}
-      <nav className="fixed top-6 w-full z-50 px-6 md:px-12 flex items-center justify-between">
+      {/* --- FLOATING NAVBAR (Professional Hamburger on Mobile, Pill Center on Desktop) --- */}
+      <nav className="fixed top-0 md:top-6 w-full z-[100] px-6 md:px-12 flex items-center justify-between md:justify-start h-20 md:h-auto bg-[#06080d]/90 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border-b border-white/10 md:border-none transition-all">
         
         {/* LOGO - Left Side */}
-        <div className="text-xl font-bold tracking-tight text-white flex items-center gap-2 z-10 cursor-pointer hover:scale-105 transition-transform">
+        <div className="text-xl font-bold tracking-tight text-white flex items-center gap-2 z-[60] cursor-pointer hover:scale-105 transition-transform">
           <CircuitBoard size={24} className="text-indigo-500" />
           pranay<span className="text-indigo-500">.NetSec</span>
         </div>
 
-        {/* PILL - Bottom Dock on Mobile (With Smart Hide/Show Transition), Absolute Center on Desktop */}
-        <div className={`fixed bottom-8 left-1/2 -translate-x-1/2 md:absolute md:top-1/2 md:-translate-y-1/2 md:bottom-auto bg-zinc-900/90 backdrop-blur-xl border border-white/10 md:border-white/5 px-5 md:px-6 py-3 rounded-full flex items-center gap-5 md:gap-8 shadow-[0_8px_32px_rgba(0,0,0,0.6)] w-max max-w-[92vw] overflow-x-auto [&::-webkit-scrollbar]:hidden z-50 transition-transform duration-300 ${visible ? 'translate-y-0' : 'translate-y-28 md:translate-y-0'}`}>
-          <div className="flex items-center gap-4 md:gap-6">
+        {/* MOBILE HAMBURGER BUTTON */}
+        <button 
+          className="md:hidden text-slate-300 hover:text-white z-[60] p-2 -mr-2"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle Menu"
+        >
+          {isMobileMenuOpen ? (
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          ) : (
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          )}
+        </button>
+
+        {/* MOBILE FULL-SCREEN MENU OVERLAY */}
+        <div className={`fixed inset-0 bg-[#06080d]/95 backdrop-blur-2xl z-50 flex flex-col items-center justify-center gap-8 transition-all duration-300 md:hidden ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
+          <div className="flex flex-col items-center gap-8 w-full px-6">
             {['About', 'Experience', 'Education', 'Skills'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="text-xs md:text-sm font-medium text-slate-300 hover:text-white transition-colors relative group whitespace-nowrap">
+              <a 
+                key={item} 
+                href={`#${item.toLowerCase()}`} 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-2xl font-medium text-slate-300 hover:text-white transition-colors"
+              >
+                {item}
+              </a>
+            ))}
+            <div className="w-12 h-px bg-white/10 my-2"></div>
+            <a 
+              href="/Resume.pdf" 
+              target="_blank" 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="bg-white hover:bg-zinc-200 text-[#06080d] px-8 py-3 rounded-full text-lg font-bold transition-all items-center gap-2 flex hover:scale-105"
+            >
+              Resume <ChevronRight size={20} />
+            </a>
+          </div>
+        </div>
+
+        {/* DESKTOP PILL - Absolute Center */}
+        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 bg-zinc-900/80 backdrop-blur-xl border border-white/5 px-6 py-3 rounded-full items-center gap-8 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+          <div className="flex gap-6">
+            {['About', 'Experience', 'Education', 'Skills'].map((item) => (
+              <a key={item} href={`#${item.toLowerCase()}`} className="text-sm font-medium text-slate-300 hover:text-white transition-colors relative group">
                 {item}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
           </div>
-          <a href="/Resume.pdf" target="_blank" className="bg-white hover:bg-zinc-200 text-[#06080d] px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-bold transition-all items-center gap-1.5 md:gap-2 flex hover:scale-105 shrink-0 whitespace-nowrap">
-            Resume <ChevronRight size={14} />
+          <a href="/Resume.pdf" target="_blank" className="bg-white hover:bg-zinc-200 text-[#06080d] px-5 py-2 rounded-full text-sm font-bold transition-all items-center gap-2 flex hover:scale-105">
+            Resume <ChevronRight size={16} />
           </a>
         </div>
 
