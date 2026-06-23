@@ -31,7 +31,7 @@ const skills = {
   "Tools & OS": ["GitHub", "Linux", "Power BI", "VS Code"],
 };
 
-// 3. Common Animated Card Component (Ata aaplya type pramane animation gheil)
+// 3. Common Animated Card Component
 const Card = ({ children, className = '', aosDelay = 0, aosType = 'fade-up' }: { children: React.ReactNode, className?: string, aosDelay?: number, aosType?: string }) => (
   <div 
     className={`bg-zinc-900 border border-zinc-800/60 p-8 rounded-3xl shadow-lg shadow-black/30 hover:border-indigo-500/50 hover:shadow-[0_8px_40px_rgba(99,102,241,0.2)] transition-all duration-500 hover:-translate-y-1 group ${className}`}
@@ -53,13 +53,33 @@ export default function Home() {
     linkedin: "https://www.linkedin.com/in/pranay-kalekar-921850338"
   };
 
-  // Initialize smooth scrolling animations
+  // State to check if navbar should be visible on mobile scroll
+  const [visible, setVisible] = React.useState(true);
+
+  // Initialize smooth scrolling animations and scroll listener
   useEffect(() => {
     AOS.init({
       duration: 800,
-      once: true, // Animation ekdach hoil scroll kartana, jyamule te glitch honar nahi
+      once: true, 
       easing: 'ease-out-cubic',
     });
+
+    let lastScrollY = window.scrollY;
+    
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // If scrolling down, hide; if scrolling up, show menu
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -74,8 +94,8 @@ export default function Home() {
           pranay<span className="text-indigo-500">.NetSec</span>
         </div>
 
-        {/* PILL - Bottom Dock on Mobile, Absolute Center on Desktop */}
-        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 md:absolute md:top-1/2 md:-translate-y-1/2 md:bottom-auto bg-zinc-900/90 backdrop-blur-xl border border-white/10 md:border-white/5 px-5 md:px-6 py-3 rounded-full flex items-center gap-5 md:gap-8 shadow-[0_8px_32px_rgba(0,0,0,0.6)] w-max max-w-[92vw] overflow-x-auto [&::-webkit-scrollbar]:hidden z-50">
+        {/* PILL - Bottom Dock on Mobile (With Smart Hide/Show Transition), Absolute Center on Desktop */}
+        <div className={`fixed bottom-8 left-1/2 -translate-x-1/2 md:absolute md:top-1/2 md:-translate-y-1/2 md:bottom-auto bg-zinc-900/90 backdrop-blur-xl border border-white/10 md:border-white/5 px-5 md:px-6 py-3 rounded-full flex items-center gap-5 md:gap-8 shadow-[0_8px_32px_rgba(0,0,0,0.6)] w-max max-w-[92vw] overflow-x-auto [&::-webkit-scrollbar]:hidden z-50 transition-transform duration-300 ${visible ? 'translate-y-0' : 'translate-y-28 md:translate-y-0'}`}>
           <div className="flex items-center gap-4 md:gap-6">
             {['About', 'Experience', 'Education', 'Skills'].map((item) => (
               <a key={item} href={`#${item.toLowerCase()}`} className="text-xs md:text-sm font-medium text-slate-300 hover:text-white transition-colors relative group whitespace-nowrap">
