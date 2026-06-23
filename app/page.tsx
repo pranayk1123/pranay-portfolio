@@ -312,20 +312,35 @@ export default function Home() {
 
         {/* --- 6. CERTIFICATIONS & INTERESTS --- */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-gradient-to-br from-zinc-900 to-transparent border border-zinc-800 p-10 rounded-3xl relative overflow-hidden group hover:border-indigo-500/40 transition-colors" data-aos="zoom-in">
+          
+          <div className="bg-gradient-to-br from-zinc-900 to-transparent border border-zinc-800 p-10 rounded-3xl relative overflow-hidden group hover:border-indigo-500/40 transition-colors flex flex-col h-full" data-aos="zoom-in">
             <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
             <div className="flex items-center gap-4 mb-8">
                <FileCheck size={28} className="text-indigo-400" />
-               <h2 className="text-2xl font-bold text-white">Certification</h2>
+               <h2 className="text-2xl font-bold text-white">Certifications</h2>
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Java Certification</h3>
-            <p className="text-indigo-400 font-semibold mb-6">Asset Computer Education</p>
-            <p className="text-slate-400 text-lg leading-relaxed font-light">
-              Mastered Core Java, OOP concepts, Collections Framework, Exception Handling, Multithreading, JDBC, Servlets, JSP, and database integration.
+            
+            <h3 className="text-xl font-bold text-white mb-2">Core & Advance Java</h3>
+            <div className="flex items-center gap-3 mb-6">
+              <p className="text-indigo-400 font-semibold">Asset Computer Education</p>
+              <span className="bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-xs px-3 py-1 rounded-full font-bold">Grade 'A'</span>
+            </div>
+            
+            <p className="text-slate-400 text-sm leading-relaxed font-light flex-grow mb-8">
+              Secured an 'A' Grade in both Core and Advance Java. Built a strong foundation in Object-Oriented Programming (OOPs), Data Structures, Exception Handling, Polymorphism, and core programming constructs.
             </p>
+            
+            <div className="flex flex-wrap gap-3 mt-auto">
+              <a href="/core-java.jpg" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-xs font-bold text-slate-300 bg-zinc-800 hover:bg-zinc-700 transition-colors px-5 py-2.5 rounded-full border border-zinc-700">
+                <FileCheck size={14} /> Core Java Certificate
+              </a>
+              <a href="/advance-java.jpg" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-xs font-bold text-slate-300 bg-zinc-800 hover:bg-zinc-700 transition-colors px-5 py-2.5 rounded-full border border-zinc-700">
+                <FileCheck size={14} /> Advanced Java Certificate
+              </a>
+            </div>
           </div>
 
-          <div className="bg-gradient-to-br from-zinc-900 to-transparent border border-zinc-800 p-10 rounded-3xl relative overflow-hidden group hover:border-blue-500/40 transition-colors" data-aos="zoom-in" data-aos-delay={100}>
+          <div className="bg-gradient-to-br from-zinc-900 to-transparent border border-zinc-800 p-10 rounded-3xl relative overflow-hidden group hover:border-blue-500/40 transition-colors flex flex-col h-full" data-aos="zoom-in" data-aos-delay={100}>
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
             <div className="flex items-center gap-4 mb-8">
                <CircuitBoard size={28} className="text-blue-400" />
@@ -340,6 +355,7 @@ export default function Home() {
               ))}
             </ul>
           </div>
+          
         </section>
       </div>
 
