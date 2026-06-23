@@ -65,8 +65,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#06080d] text-slate-300 font-sans selection:bg-indigo-500/30 selection:text-indigo-200 overflow-hidden">
       
-      {/* --- FLOATING NAVBAR (Logo Left, Pill Right on Mobile, Centered on Desktop) --- */}
-      {/* ADDED justify-between to push items to ends on mobile */}
+      {/* --- FLOATING NAVBAR (Logo Top, Pill Bottom on Mobile & Absolute Center on Desktop) --- */}
       <nav className="fixed top-6 w-full z-50 px-6 md:px-12 flex items-center justify-between">
         
         {/* LOGO - Left Side */}
@@ -75,18 +74,18 @@ export default function Home() {
           pranay<span className="text-indigo-500">.NetSec</span>
         </div>
 
-        {/* PILL - Relative on Mobile (Right), Absolute Center on Desktop */}
-        <div className="relative md:absolute md:left-1/2 md:-translate-x-1/2 bg-zinc-900/80 backdrop-blur-xl border border-white/5 px-6 py-3 rounded-full flex items-center gap-6 md:gap-8 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
-          <div className="hidden md:flex gap-6">
+        {/* PILL - Bottom Dock on Mobile, Absolute Center on Desktop */}
+        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 md:absolute md:top-1/2 md:-translate-y-1/2 md:bottom-auto bg-zinc-900/90 backdrop-blur-xl border border-white/10 md:border-white/5 px-5 md:px-6 py-3 rounded-full flex items-center gap-5 md:gap-8 shadow-[0_8px_32px_rgba(0,0,0,0.6)] w-max max-w-[92vw] overflow-x-auto [&::-webkit-scrollbar]:hidden z-50">
+          <div className="flex items-center gap-4 md:gap-6">
             {['About', 'Experience', 'Education', 'Skills'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="text-sm font-medium text-slate-300 hover:text-white transition-colors relative group">
+              <a key={item} href={`#${item.toLowerCase()}`} className="text-xs md:text-sm font-medium text-slate-300 hover:text-white transition-colors relative group whitespace-nowrap">
                 {item}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
           </div>
-          <a href="/Resume.pdf" target="_blank" className="bg-white hover:bg-zinc-200 text-[#06080d] px-5 py-2 rounded-full text-sm font-bold transition-all items-center gap-2 flex hover:scale-105">
-            Resume <ChevronRight size={16} />
+          <a href="/Resume.pdf" target="_blank" className="bg-white hover:bg-zinc-200 text-[#06080d] px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-bold transition-all items-center gap-1.5 md:gap-2 flex hover:scale-105 shrink-0 whitespace-nowrap">
+            Resume <ChevronRight size={14} />
           </a>
         </div>
 
@@ -177,7 +176,7 @@ export default function Home() {
           </div>
           
           <div className="relative border-l-2 border-white/10 ml-4 md:ml-6 space-y-16">
-            <div className="relative pl-10 md:pl-16 group" data-aos="fade-up">
+            <div className="relative pl-10 md:pl-16 group" data-aos="fade-right">
               <div className="absolute w-6 h-6 bg-zinc-950 border-4 border-indigo-500 rounded-full -left-[14px] top-1 group-hover:scale-125 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.8)] transition-all duration-300"></div>
               
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
@@ -328,7 +327,7 @@ export default function Home() {
         {/* --- 6. CERTIFICATIONS & INTERESTS --- */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
-          <div className="bg-gradient-to-br from-zinc-900 to-transparent border border-zinc-800 p-10 rounded-3xl relative overflow-hidden group hover:border-indigo-500/40 transition-colors flex flex-col h-full" data-aos="fade-up">
+          <div className="bg-gradient-to-br from-zinc-900 to-transparent border border-zinc-800 p-10 rounded-3xl relative overflow-hidden group hover:border-indigo-500/40 transition-colors flex flex-col h-full" data-aos="fade-right">
             <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
             <div className="flex items-center gap-4 mb-8">
                <FileCheck size={28} className="text-indigo-400" />
@@ -355,7 +354,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-zinc-900 to-transparent border border-zinc-800 p-10 rounded-3xl relative overflow-hidden group hover:border-blue-500/40 transition-colors flex flex-col h-full" data-aos="fade-up" data-aos-delay={100}>
+          <div className="bg-gradient-to-br from-zinc-900 to-transparent border border-zinc-800 p-10 rounded-3xl relative overflow-hidden group hover:border-blue-500/40 transition-colors flex flex-col h-full" data-aos="fade-left" data-aos-delay={100}>
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
             <div className="flex items-center gap-4 mb-8">
                <CircuitBoard size={28} className="text-blue-400" />
@@ -404,7 +403,7 @@ export default function Home() {
           </div>
           
           <div className="text-sm text-slate-600 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/10 pt-8">
-            <p>© {new Date().getFullYear()} Pranay Kalekar. sys.exit(0);</p>
+            <p>© {new Date().getFullYear()} Pranay Kalekar. root@localhost:~$ logout</p>
             <p className="flex items-center gap-2">Built with <span className="text-white font-bold">Next.js</span> & <span className="text-blue-400 font-bold">Tailwind</span></p>
           </div>
         </div>
