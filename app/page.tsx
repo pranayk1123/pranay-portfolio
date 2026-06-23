@@ -1,6 +1,6 @@
 // src/app/page.tsx
 import Image from 'next/image';
-import { Mail, Phone, MapPin, Briefcase, GraduationCap, FileCheck, Code2, Target, ExternalLink, ChevronRight, CircuitBoard, Sparkles } from 'lucide-react';
+import { Mail, Phone, MapPin, Briefcase, GraduationCap, FileCheck, Code2, Target, ExternalLink, ChevronRight, CircuitBoard, Sparkles, Trophy } from 'lucide-react';
 
 // 1. Custom Icons 
 const LinkedinIcon = ({ size = 20 }) => (
@@ -40,7 +40,7 @@ const Card = ({ children, className = '', aosDelay = 0 }: { children: React.Reac
 export default function Home() {
   const info = {
     name: "Pranay Kalekar",
-    title: "Software Engineer & IT Graduate",
+    title: "Cybersecurity Enthusiast & IT Graduate",
     email: "pranaykalekar1123@gmail.com",
     phone: "+91-8108802269",
     address: "Mumbai, Maharashtra",
@@ -86,7 +86,7 @@ export default function Home() {
           
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900 border border-zinc-800 text-indigo-400 text-sm font-medium mb-8 backdrop-blur-md shadow-lg shadow-black/50 hover:bg-zinc-800 transition-colors cursor-default">
             <Sparkles size={16} className="text-indigo-400 animate-pulse" />
-              Building digital experiences that matter
+              Securing digital experiences that matter
           </div>
           
           <h1 className="text-5xl md:text-8xl font-black tracking-tight mb-6 leading-[1.1] text-white">
@@ -97,7 +97,7 @@ export default function Home() {
           </h1>
           
           <p className="text-lg md:text-2xl text-slate-400 mb-10 max-w-3xl leading-relaxed">
-            Crafting robust backend systems and exploring the exciting realms of <span className="text-white font-medium">Cybersecurity, Networking</span> and <span className="text-white font-medium">Modern Web Technologies</span>.
+            Passionate about building secure IT infrastructures and exploring the exciting realms of <span className="text-white font-medium">Cybersecurity, Networking</span> and <span className="text-white font-medium">System Administration</span>.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center gap-6 justify-center w-full sm:w-auto mb-16">
@@ -114,12 +114,12 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Profile Image - Rotating Neon Border Effect (Replaced Blink/Pulse) */}
+          {/* Profile Image - Rotating Neon Border Effect (Fade/Pulse completely removed) */}
           <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full flex items-center justify-center group hover:-translate-y-2 transition-transform duration-500">
             {/* Rotating Gradient Background */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-500 via-cyan-400 to-purple-600 animate-[spin_4s_linear_infinite] group-hover:animate-[spin_2s_linear_infinite]"></div>
             
-            {/* Constant Outer Glow (No blinking) */}
+            {/* Constant Outer Glow */}
             <div className="absolute inset-0 rounded-full bg-indigo-500/30 blur-xl group-hover:bg-indigo-400/50 group-hover:blur-2xl transition-all duration-500"></div>
             
             {/* Inner Image Container */}
@@ -149,7 +149,7 @@ export default function Home() {
           </div>
           <Card aosDelay={100}>
             <p className="text-xl text-slate-300 leading-relaxed font-light">
-              I am an IT Graduate with a solid foundation in <span className="text-indigo-400 font-semibold">computer systems, networking, cybersecurity, software testing, web technologies,</span> and <span className="text-cyan-400 font-semibold">database management</span>. Skilled at learning new technologies and solving technical challenges through analytical thinking and problem-solving. Currently seeking an entry-level IT opportunity to apply my skills, contribute to team success, and grow professionally.
+              I am an IT Graduate with a solid foundation in <span className="text-indigo-400 font-semibold">computer systems, networking, cybersecurity, software testing,</span> and <span className="text-cyan-400 font-semibold">database management</span>. Skilled at learning new technologies and solving technical challenges through analytical thinking and problem-solving. Currently seeking an entry-level IT opportunity to apply my skills in secure networks, contribute to team success, and grow professionally.
             </p>
           </Card>
         </section>
@@ -193,11 +193,61 @@ export default function Home() {
                   </li>
                 </ul>
                 
-                <a href="https://travelling-website.vercel.app/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-black bg-indigo-400 hover:bg-indigo-300 transition-colors px-6 py-3 rounded-full hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:scale-105">
+                <a href="https://travalling-website.vercel.app/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-black bg-indigo-400 hover:bg-indigo-300 transition-colors px-6 py-3 rounded-full hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:scale-105">
                   <ExternalLink size={18} /> View Live Project
                 </a>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* --- NEW SECTION: ACHIEVEMENTS & HACKATHONS --- */}
+        <section id="achievements" className="scroll-mt-32">
+          <div className="flex items-center gap-4 mb-10">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">Achievements</h2>
+            <div className="h-px bg-gradient-to-r from-purple-500/50 to-transparent flex-1"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Orbit Scope Hackathon */}
+            <Card aosDelay={100} className="flex flex-col h-full">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-yellow-500/10 rounded-2xl border border-yellow-500/20"><Trophy size={28} className="text-yellow-400" /></div>
+                <h3 className="text-2xl font-bold text-white">1st Prize - Hackathon</h3>
+              </div>
+              <p className="text-indigo-400 font-semibold mb-3">Ruia College, Matunga (Techstorm 2025)</p>
+              <div className="mb-4">
+                <span className="bg-zinc-950 border border-zinc-800 text-zinc-300 text-xs px-4 py-1.5 rounded-full font-mono">Project: .orbitScope</span>
+              </div>
+              <p className="text-slate-400 text-sm leading-relaxed font-light flex-grow mb-8">
+                Won 1st prize for building a live 3D satellite tracking web app. Using React, Tailwind CSS, and Three.js, our team created an interactive platform that visualizes real-time space data. A proud project completed within a strict 24-hour deadline!
+              </p>
+              <div className="flex flex-wrap gap-3 mt-auto">
+                <a href="https://orbit-scope-hackathon-website.vercel.app/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-xs font-bold text-black bg-indigo-400 hover:bg-indigo-300 transition-colors px-5 py-2.5 rounded-full hover:scale-105">
+                  <ExternalLink size={14} /> View Live Project
+                </a>
+                <a href="/hackathon-cert.jpg" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-xs font-bold text-slate-300 bg-zinc-800 hover:bg-zinc-700 transition-colors px-5 py-2.5 rounded-full border border-zinc-700">
+                  <FileCheck size={14} /> Certificate
+                </a>
+              </div>
+            </Card>
+
+            {/* Code Quest */}
+            <Card aosDelay={200} className="flex flex-col h-full">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-yellow-500/10 rounded-2xl border border-yellow-500/20"><Trophy size={28} className="text-yellow-400" /></div>
+                <h3 className="text-2xl font-bold text-white">1st Prize - Code Quest</h3>
+              </div>
+              <p className="text-indigo-400 font-semibold mb-6">KC College, Churchgate (Fiestron 2025)</p>
+              <p className="text-slate-400 text-sm leading-relaxed font-light flex-grow mb-8">
+                Secured 1st place in a fast-paced competitive coding event. Showcased quick problem-solving, strong logical thinking, and the ability to write clean, efficient code under intense time pressure.
+              </p>
+              <div className="flex flex-wrap gap-3 mt-auto">
+                <a href="/code-quest-cert.jpg" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-xs font-bold text-slate-300 bg-zinc-800 hover:bg-zinc-700 transition-colors px-5 py-2.5 rounded-full border border-zinc-700">
+                  <FileCheck size={14} /> View Certificate
+                </a>
+              </div>
+            </Card>
           </div>
         </section>
 
@@ -260,7 +310,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* --- 6. CERTIFICATIONS & ACHIEVEMENTS --- */}
+        {/* --- 6. CERTIFICATIONS & INTERESTS --- */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-gradient-to-br from-zinc-900 to-transparent border border-zinc-800 p-10 rounded-3xl relative overflow-hidden group hover:border-indigo-500/40 transition-colors" data-aos="zoom-in">
             <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
