@@ -65,19 +65,27 @@ export default function Home() {
     });
   }, []);
 
-  // Prevent background scrolling when mobile menu is open
+  // Close menu on scroll instead of blocking background scroll
   useEffect(() => {
+    const handleScroll = () => {
+      if (isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
+      window.addEventListener('scroll', handleScroll, { passive: true });
     }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [isMobileMenuOpen]);
 
   return (
     <main className="min-h-screen bg-[#06080d] text-slate-300 font-sans selection:bg-indigo-500/30 selection:text-indigo-200 overflow-hidden">
       
-      {/* --- FLOATING NAVBAR (Professional Hamburger on Mobile, Pill Center on Desktop) --- */}
+      {/* --- FLOATING NAVBAR (Modern Asymmetric Pill on Mobile, Pill Center on Desktop) --- */}
       <nav className="fixed top-0 md:top-6 w-full z-[100] px-6 md:px-12 flex items-center justify-between md:justify-start h-20 md:h-auto bg-[#06080d]/90 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border-b border-white/10 md:border-none transition-all">
         
         {/* LOGO - Left Side */}
@@ -86,28 +94,29 @@ export default function Home() {
           pranay<span className="text-indigo-500">.NetSec</span>
         </div>
 
-        {/* MOBILE HAMBURGER BUTTON */}
+        {/* MOBILE MENU BUTTON (Modern Asymmetric Pill Style) */}
         <button 
-          className="md:hidden text-slate-300 hover:text-white z-[60] p-2 -mr-2"
+          className="md:hidden flex items-center gap-2 text-slate-300 hover:text-white z-[60] px-4 py-2 bg-zinc-900 border border-white/10 rounded-full transition-all active:scale-95"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle Menu"
         >
+          <span className="text-xs font-bold uppercase tracking-widest">{isMobileMenuOpen ? 'Close' : 'Menu'}</span>
           {isMobileMenuOpen ? (
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           ) : (
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="10" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line></svg>
           )}
         </button>
 
-        {/* MOBILE FULL-SCREEN MENU OVERLAY */}
-        <div className={`fixed inset-0 bg-[#06080d]/95 backdrop-blur-2xl z-50 flex flex-col items-center justify-center gap-8 transition-all duration-300 md:hidden ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
-          <div className="flex flex-col items-center gap-8 w-full px-6">
+        {/* MOBILE DROPDOWN MENU */}
+        <div className={`absolute top-24 left-6 right-6 bg-zinc-900/95 border border-white/10 rounded-3xl backdrop-blur-xl shadow-2xl z-50 flex flex-col items-center py-8 transition-all duration-300 md:hidden ${isMobileMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-4 pointer-events-none'}`}>
+          <div className="flex flex-col items-center gap-6 w-full px-6">
             {['About', 'Experience', 'Education', 'Skills'].map((item) => (
               <a 
                 key={item} 
                 href={`#${item.toLowerCase()}`} 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-2xl font-medium text-slate-300 hover:text-white transition-colors"
+                className="text-xl font-medium text-slate-300 hover:text-white transition-colors"
               >
                 {item}
               </a>
@@ -453,7 +462,10 @@ export default function Home() {
           </div>
           
           <div className="text-sm text-slate-600 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/10 pt-8">
-            <p>© {new Date().getFullYear()} Pranay Kalekar. root@localhost:~$ logout</p>
+            <div className="text-center md:text-left">
+              <p>© {new Date().getFullYear()} Pranay Kalekar. root@localhost:~$ logout</p>
+              <p className="text-xs text-slate-500 mt-1">All rights reserved.</p>
+            </div>
             <p className="flex items-center gap-2">Built with <span className="text-white font-bold">Next.js</span> & <span className="text-blue-400 font-bold">Tailwind</span></p>
           </div>
         </div>
