@@ -193,7 +193,7 @@ export default function Home() {
           </h1>
           
           <p className="text-lg md:text-2xl text-slate-400 mb-10 max-w-3xl leading-relaxed">
-            Passionate about building secure IT infrastructures and exploring the exciting realms of <span className="text-white font-medium">Cybersecurity, Networking</span> and <span className="text-white font-medium">System Administration</span>.
+            Passionate about building reliable IT infrastructures and exploring the fields of <span className="text-white font-medium">Cybersecurity, Networking</span> and <span className="text-white font-medium">and AI Data Center Technologies.</span>.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center gap-6 justify-center w-full sm:w-auto mb-16">
@@ -244,8 +244,11 @@ export default function Home() {
             <div className="h-px bg-gradient-to-r from-indigo-500/50 to-transparent flex-1"></div>
           </div>
           <Card aosDelay={100}>
+            <p className="text-xl text-slate-300 leading-relaxed font-light mb-6">
+              I am an IT Graduate currently working as an <strong className="text-indigo-400 font-semibold">L1 Network Support Engineer at DOMACH Technologies (India) Pvt. Ltd.</strong>, <strong className="text-indigo-400 font-semibold">Client side Yotta Data Center</strong> with hands-on experience in <strong className="text-white font-medium">NVIDIA AI GPU Infrastructure</strong> at Yotta Data Center. My technical expertise includes computer networking, switch configuration, network connectivity validation, routing & switching, VLANs, subnetting, and network troubleshooting.
+            </p>
             <p className="text-xl text-slate-300 leading-relaxed font-light">
-              I am an IT Graduate with a solid foundation in <span className="text-indigo-400 font-semibold">computer systems, networking, cybersecurity, software testing,</span> and <span className="text-cyan-400 font-semibold">database management</span>. Skilled at learning new technologies and solving technical challenges through analytical thinking and problem-solving. Currently seeking an entry-level IT opportunity to apply my skills in secure networks, contribute to team success, and grow professionally.
+              I have a strong foundation in <strong className="text-white font-medium">networking, cybersecurity, computer systems, software testing, and database management</strong>. I am passionate about exploring emerging technologies, strengthening my technical expertise, and contributing to reliable, secure, and efficient IT infrastructure.
             </p>
           </Card>
         </section>
@@ -259,6 +262,43 @@ export default function Home() {
           
           <div className="relative border-l-2 border-white/10 ml-4 md:ml-6 space-y-16">
             
+            {/* UPDATED: L1 Network Support Engineer (Moved below Internship as requested) */}
+            <div className="relative pl-10 md:pl-16 group" data-aos="fade-right">
+              <div className="absolute w-6 h-6 bg-zinc-950 border-4 border-indigo-500 rounded-full -left-[14px] top-1 group-hover:scale-125 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.8)] transition-all duration-300"></div>
+              
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-indigo-400 transition-colors">L1 Network Support Engineer</h3>
+                  <div className="text-xl text-slate-400 mt-2 flex items-center gap-2">
+                    <Briefcase size={20} className="text-indigo-500" /> Domach Technologies (I) Pvt. Ltd.
+                  </div>
+                  <div className="text-sm text-indigo-400 mt-1 font-medium flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full inline-block"></span> Client Location: Yotta Data Center
+                  </div>
+                </div>
+                <div className="text-sm font-bold text-indigo-300 bg-indigo-500/10 border border-indigo-500/30 px-4 py-2 rounded-full backdrop-blur-md w-fit">
+                  Present
+                </div>
+              </div>
+              
+              <div className="bg-zinc-900 border border-white/5 hover:border-indigo-500/30 p-8 rounded-3xl backdrop-blur-md transition-all duration-500 hover:-translate-y-1 shadow-lg shadow-black/50 hover:shadow-[0_10px_40px_rgba(99,102,241,0.1)]">
+                <ul className="space-y-4 text-lg text-slate-300 font-light">
+                  <li className="flex gap-4">
+                    <span className="text-indigo-500 mt-1">✦</span>
+                    <span>Working on <strong className="text-white font-medium">NVIDIA AI GPU Infrastructure</strong>, handling NVIDIA network switch configuration, port validation, server connectivity validation, and network connectivity testing.</span>
+                  </li>
+                  <li className="flex gap-4">
+                    <span className="text-indigo-500 mt-1">✦</span>
+                    <span>Performing network switch installation, rack mounting, and connectivity setup, including <strong className="text-white font-medium">SFP, DAC, and UTP</strong> cable installation, testing, and port-level troubleshooting.</span>
+                  </li>
+                  <li className="flex gap-4">
+                    <span className="text-indigo-500 mt-1">✦</span>
+                    <span>Supporting data center network operations and troubleshooting, with hands-on exposure to <strong className="text-white font-medium">Routing & Switching, VLAN Configuration, Trunking, IP Addressing, Subnetting</strong>, and high-performance AI GPU networking.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
             {/* EXISTING: Back-end Developer Intern (Moved to Top as requested) */}
             <div className="relative pl-10 md:pl-16 group" data-aos="fade-right">
               <div className="absolute w-6 h-6 bg-zinc-950 border-4 border-indigo-500 rounded-full -left-[14px] top-1 group-hover:scale-125 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.8)] transition-all duration-300"></div>
@@ -294,43 +334,6 @@ export default function Home() {
                 <a href="https://travalling-website.vercel.app/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-black bg-indigo-400 hover:bg-indigo-300 transition-colors px-6 py-3 rounded-full hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:scale-105">
                   <ExternalLink size={18} /> View Live Project
                 </a>
-              </div>
-            </div>
-
-            {/* UPDATED: L1 Network Support Engineer (Moved below Internship as requested) */}
-            <div className="relative pl-10 md:pl-16 group" data-aos="fade-right">
-              <div className="absolute w-6 h-6 bg-zinc-950 border-4 border-indigo-500 rounded-full -left-[14px] top-1 group-hover:scale-125 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.8)] transition-all duration-300"></div>
-              
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-indigo-400 transition-colors">L1 Network Support Engineer</h3>
-                  <div className="text-xl text-slate-400 mt-2 flex items-center gap-2">
-                    <Briefcase size={20} className="text-indigo-500" /> Domach Technologies (I) Pvt. Ltd.
-                  </div>
-                  <div className="text-sm text-indigo-400 mt-1 font-medium flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full inline-block"></span> Client Location: Yotta Data Center, Panvel
-                  </div>
-                </div>
-                <div className="text-sm font-bold text-indigo-300 bg-indigo-500/10 border border-indigo-500/30 px-4 py-2 rounded-full backdrop-blur-md w-fit">
-                  Present
-                </div>
-              </div>
-              
-              <div className="bg-zinc-900 border border-white/5 hover:border-indigo-500/30 p-8 rounded-3xl backdrop-blur-md transition-all duration-500 hover:-translate-y-1 shadow-lg shadow-black/50 hover:shadow-[0_10px_40px_rgba(99,102,241,0.1)]">
-                <ul className="space-y-4 text-lg text-slate-300 font-light">
-                  <li className="flex gap-4">
-                    <span className="text-indigo-500 mt-1">✦</span>
-                    <span>Working on <strong className="text-white font-medium">NVIDIA AI GPU Infrastructure</strong>, handling NVIDIA network switch configuration, port validation, server connectivity validation, and network connectivity testing.</span>
-                  </li>
-                  <li className="flex gap-4">
-                    <span className="text-indigo-500 mt-1">✦</span>
-                    <span>Performing network switch installation, rack mounting, and connectivity setup, including <strong className="text-white font-medium">SFP, DAC, and UTP</strong> cable installation, testing, and port-level troubleshooting.</span>
-                  </li>
-                  <li className="flex gap-4">
-                    <span className="text-indigo-500 mt-1">✦</span>
-                    <span>Supporting data center network operations and troubleshooting, with hands-on exposure to <strong className="text-white font-medium">Routing & Switching, VLAN Configuration, Trunking, IP Addressing, Subnetting</strong>, and high-performance AI GPU networking.</span>
-                  </li>
-                </ul>
               </div>
             </div>
 
@@ -493,9 +496,9 @@ export default function Home() {
               {[
                 { title: "Cybersecurity", desc: "Network Security & Ethical Hacking", icon: <Shield size={22} className="text-blue-400" /> },
                 { title: "Networking", desc: "Routing, Switching & Protocols (CCNA)", icon: <Globe size={22} className="text-indigo-400" /> },
-                { title: "Software Testing", desc: "Manual Testing, QA & Bug Tracking", icon: <Bug size={22} className="text-purple-400" /> },
-                { title: "Web Development", desc: "Full-Stack React & Next.js Apps", icon: <Laptop size={22} className="text-cyan-400" /> },
-                { title: "Database Mgt.", desc: "SQL, MongoDB & Architecture", icon: <Database size={22} className="text-emerald-400" /> }
+                { title: "Data Center Infrastructure", desc: "NVIDIA AI GPU Infrastructure, Network Switches & Connectivity", icon: <Bug size={22} className="text-purple-400" /> },
+                { title: "System Administration", desc: "Linux Administration, Server Management & System Troubleshooting", icon: <Laptop size={22} className="text-cyan-400" /> },
+                { title: "Network Operations", desc: "Switch Configuration, Network Monitoring & Troubleshooting", icon: <Database size={22} className="text-emerald-400" /> }
               ].map((item, index) => (
                 <div key={index} className="group/item flex items-center gap-4 bg-zinc-950/50 border border-white/5 p-4 rounded-2xl hover:border-blue-500/30 hover:bg-blue-500/5 transition-all">
                   <div className="bg-white/5 p-3 rounded-xl group-hover/item:scale-110 transition-transform">
