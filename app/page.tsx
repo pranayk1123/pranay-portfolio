@@ -146,7 +146,7 @@ export default function Home() {
             ))}
             <div className="w-12 h-px bg-white/10 my-2"></div>
             <a 
-              href="/Resume.pdf" 
+              href="/Resume1.pdf" 
               target="_blank" 
               onClick={() => setIsMobileMenuOpen(false)}
               className="bg-white hover:bg-zinc-200 text-[#06080d] px-8 py-3 rounded-full text-lg font-bold transition-all items-center gap-2 flex hover:scale-105"
@@ -166,7 +166,7 @@ export default function Home() {
               </a>
             ))}
           </div>
-          <a href="/Resume.pdf" target="_blank" className="bg-white hover:bg-zinc-200 text-[#06080d] px-5 py-2 rounded-full text-sm font-bold transition-all items-center gap-2 flex hover:scale-105">
+          <a href="/Resume1.pdf" target="_blank" className="bg-white hover:bg-zinc-200 text-[#06080d] px-5 py-2 rounded-full text-sm font-bold transition-all items-center gap-2 flex hover:scale-105">
             Resume <ChevronRight size={16} />
           </a>
         </div>
